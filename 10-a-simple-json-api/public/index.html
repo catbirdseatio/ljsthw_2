@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset='utf-8'>
+  <meta name="description" content="htmx test">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+
+  <link href="/blockstart.css" rel="stylesheet">
+  <script src="/jzed.js"></script>
+
+  <script>
+    const get_message = async (url) => {
+      const data = await $fetch_json(url);
+      const message = $id("message");
+
+      if(data) {
+        $html(message, data.message);
+      } else {
+        $style([message, 'error']);
+        $html(message, "ERROR!");
+      }
+    }
+  </script>
+
+  <style>
+    .error {
+      background-color: red;
+    }
+  </style>
+
+  <title>Ex 10</title>
+</head>
+
+
+<body>
+  <block class="sized center" style="--h: 100vh; --w: 50vw;">
+    <block class="solid center sized pad" style="--h: min-content; --pad: 1rem;" id="fake-button" onClick="get_message('/messages.json')">
+      <h1 class="center" id="message">Click Me</h1>
+    </block>
+
+    <block class="solid center sized pad" style="--h: min-content; --pad: 1rem;" id="fake-button" onClick="get_message('/badcall.json')">
+      <h1 class="center">Click For Error</h1>
+    </block>
+  </block>
+</body>
+</html>

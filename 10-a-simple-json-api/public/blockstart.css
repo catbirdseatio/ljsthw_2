@@ -1,0 +1,200 @@
+:root {
+  --color-border: hsl(0, 0%, 50%);
+  --border-radius: 5px;
+  --value0: hsl(0, 0%, 0%);
+  --value1: hsl(0, 0%, 11%);
+  --value2: hsl(0, 0%, 22%);
+  --value3: hsl(0, 0%, 33%);
+  --value4: hsl(0, 0%, 44%);
+  --value5: hsl(0, 0%, 55%);
+  --value6: hsl(0, 0%, 66%);
+  --value7: hsl(0, 0%, 77%);
+  --value8: hsl(0, 0%, 88%);
+  --value9: hsl(0, 0%, 100%);
+  --text: 0;
+}
+
+body {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0px;
+  margin: 0px;
+}
+
+content {
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+}
+
+block {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  display: flex;
+  --spacing: space-evenly;
+  justify-content: var(--spacing);
+  flex-direction: column;
+}
+
+block > * {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  display: flex;
+  flex: 1 1 auto;
+  --spacing: flex-start;
+  justify-content: var(--spacing);
+  align-self: stretch;
+  flex-direction: column;
+  margin: 2px;
+}
+
+.wide {
+  width: 100%;
+}
+
+.no-flex {
+  display: block;
+  flex: unset;
+  flex-direction: unset;
+  align-self: unset;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.center-text > * {
+  text-align: center;
+}
+
+.center-self {
+  align-self: center;
+}
+
+.vertical {
+  flex-direction: column;
+}
+
+.horizontal {
+  flex-direction: row;
+}
+
+grid {
+  --cols: 1fr 1fr;
+  --rows: auto;
+  --gap: 0.5rem;
+
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  display: grid;
+  grid-gap: var(--gap);
+  grid-template-columns: var(--cols);
+  grid-template-rows: var(--rows);
+}
+
+stack {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "cover";
+}
+
+stack > * {
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  width: 100%;
+  height: 100%;
+  position: relative;
+  grid-area: cover;
+}
+
+stack > .top {
+  z-index: 10;
+}
+
+hr {
+  --height: 1rem;
+  min-height: var(--height);
+  visibility: hidden;
+}
+
+hr.huge {
+  --height: 3rem;
+}
+
+shape {
+  --w: 100%;
+  --h: 100%;
+  --value: 4;
+
+  color: hsl(0, 0%, calc(var(--text) * 11%));
+  background-color: hsl(0, 0%, calc(var(--value) * 11%));
+  display: flex;
+  width: var(--w);
+  min-width: var(--w);
+  max-width: var(--w);
+  height: var(--h);
+  min-height: var(--h);
+  max-height: var(--h);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+}
+
+.debug {
+  border: 1px solid red;
+}
+
+.debug > * {
+  border: 1px solid blue;
+}
+
+.pad {
+  --pad: 1rem;
+  padding: var(--pad);
+}
+
+.sized {
+  --w: 100%;
+  --h: 100%;
+  width: var(--w);
+  min-width: var(--w);
+  max-width: var(--w);
+  height: var(--h);
+  min-height: var(--h);
+  max-height: var(--h);
+}
+
+.border {
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+}
+
+.solid {
+  --value: 8;
+  background-color: hsl(0, 0%, calc(var(--value) * 11%));
+}
+
+.dots {
+  --pat-val: 7;
+
+  background-image: radial-gradient(hsl(0, 0%, calc(var(--pat-val) * 11%)) 1px, transparent 1px);
+  background-size: calc(10 * 1px) calc(10 * 1px);
+}
+
+.lines {
+  --pat-val: 7;
+  background-image: linear-gradient(hsl(0, 0%, calc(var(--pat-val) * 11%)) 1px, transparent 1px), linear-gradient(to right, hsl(0, 0%, calc(var(--pat-val) * 11%)) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+.stripes {
+  --pat-val: 7;
+  background-image: linear-gradient(90deg, transparent 50%, hsl(0, 0%, calc(var(--pat-val) * 11%)) 50%);
+  background-size: 10px 10px;
+}

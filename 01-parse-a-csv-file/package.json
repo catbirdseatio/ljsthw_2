@@ -1,0 +1,21 @@
+{
+  "name": "01-parse-a-csv-file",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "step1.js",
+  "scripts": {
+    "test": "ava step6.js"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "csv-spectrum": "^1.0.0",
+    "deep-equal": "^2.0.5",
+    "fast-csv": "^4.3.6",
+    "neat-csv": "^7.0.0"
+  },
+  "devDependencies": {
+    "ava": "^5.1.0"
+  }
+}
