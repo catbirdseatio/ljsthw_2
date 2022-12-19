@@ -47,11 +47,10 @@ export const parse_to_2d_array = (raw_csv) => {
   }
 
   // The array may have a one-element array with an empty string.
-  // remove it from the data array
-  let scrubbed_data = array_data.filter(
+  // remove it from the data array, as it will not work as intended.
+  return array_data.filter(
     (item) => array_data[0].length === item.length
   );
-  return scrubbed_data;
 };
 
 /**
@@ -74,6 +73,11 @@ export const array_of_objects = (csv_array) => {
   return formed_array;
 };
 
+/**
+ * Parses a raw string to an array of objects.
+ * @param {*} csv_data: raw csv string 
+ * @returns an array of objects parsed from csv_data
+ */
 export const parse = (csv_data) => {
   const array_2d = parse_to_2d_array(csv_data);
   return array_of_objects(array_2d);
