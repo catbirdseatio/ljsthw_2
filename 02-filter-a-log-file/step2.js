@@ -1,11 +1,11 @@
 import fs from "fs";
 
-const raw_log = fs.readFileSync(process.argv[2]);
+// Get a file and a pattern from argv
+const raw_log = fs.readFileSync(process.argv[2]).toString().split("\n");
 const filter_pattern = new RegExp(process.argv[3], "g")
 
+// Convert log into an array
 let lines = raw_log
-  .toString()
-  .split("\n")
   .map((line) => {
     return line
       .split(/[-"]/gi)
@@ -14,8 +14,8 @@ let lines = raw_log
   })
   .filter((item) => item.length !== 0);
 
-
-console.log(lines.forEach(line => {
+// Filter with the regex; if match found, write out the raw line to the console
+lines.forEach((line, index) => {
     const match = line.find(value => filter_pattern.test(value));
-    if (match) console.log(` - - [${line[0]}] "${line[1]}" ""${line[2]}" ${line[3]} ${line[4]} "${line[5]} ${line[6]}" -`);
-}));
+    if (match) console.log(raw_log[index]);
+});
