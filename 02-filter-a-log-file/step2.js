@@ -2,7 +2,7 @@ import fs from "fs";
 
 // Get a file and a pattern from argv
 const raw_log = fs.readFileSync(process.argv[2]).toString().split("\n");
-const filter_pattern = new RegExp(process.argv[3], "g")
+const filter_pattern = new RegExp(process.argv[3], "gi")
 
 // Convert log into an array
 let lines = raw_log
