@@ -26,10 +26,10 @@ export const parse_to_2d_array = (raw_csv) => {
 
   // Create an array to hold our individual pattern
   // matching groups.
-  let array_matches = null;
+  let array_matches = objPattern.exec(raw_csv);
 
   // loop until there are no more matches
-  while ((array_matches = objPattern.exec(raw_csv))) {
+  while (array_matches) {
     let str_matched_delimiter = array_matches[1];
 
     if (str_matched_delimiter.length && str_matched_delimiter !== str_delimiter) {
@@ -44,6 +44,7 @@ export const parse_to_2d_array = (raw_csv) => {
 
     str_matched_value = str_matched_value || '';
     array_data[array_data.length - 1].push(str_matched_value);
+    array_matches = objPattern.exec(raw_csv);
   }
 
   // The array may have a one-element array with an empty string.
